@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html style="text-align: center;">
+<head>
+    <title>Assign Device</title>
+
+    
+   
+</head>
+<body>
+<img width="600" height="400" src="https://www.sararailconference.com/wp-content/uploads/2025/07/KNORR-BREMSE.jpg" 
+    class="jet-listing-dynamic-image__img attachment-full size-full wp-post-image" alt="KNORR-BREMSE" decoding="async"
+     srcset="https://www.sararailconference.com/wp-content/uploads/2025/07/KNORR-BREMSE.jpg 600w, https://www.sararailconference.com/wp-content/uploads/2025/07/KNORR-BREMSE-300x200.jpg 300w"
+     sizes="(max-width: 600px) 100vw, 600px" loading="eager">
+<h2>Knorr Internal Sale</h2>
+
+<form method="POST">
+
+    <label>Employee Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Employee ID:</label><br>
+    <input type="text" name="emp_id" required pattern="\d+" title="Numbers only"><br><br>
+
+    <label>Select Computer:</label><br>
+    <select id="device" name="device" required style="width:300px;">
+        <option value="">-- Select Computer --</option>
+
+        {% for comp in computers %}
+            <option value="{{ comp['Device'] }}">{{ comp['display'] }}</option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+<br>
+<p>{{ message }}</p>
+
+<script>
+$(document).ready(function() {
+    $('#device').select2({
+        placeholder: "Search or select a device",
+        allowClear: true,
+        width: '300px'
+    });
+});
+</script>
+
+</body>
+</html>
